@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Be my valentine❤️</title>
+    <style>
+        body {
+            background-color: pink;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            text-align: center;
+            overflow: hidden;
+        }
+        .button {
+            margin: 10px;
+        }
+        .heart {
+            position: absolute;
+            font-size: 2rem;
+            animation: float 4s ease-in-out infinite;
+        }
+        @keyframes float {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Sorilys, ¿aceptas ser mi san valentín?❤️ :3</h1>
+    <button class="button" onclick="answer('Yes')">Sí</button>
+    <button class="button" id="noButton" onclick="moveNoButton()">No</button>
+    <p id="response"></p>
+    <script>
+        function answer(response) {
+            const messageElement = document.getElementById("response");
+            if (response === 'Yes') {
+                messageElement.innerHTML = "Me has hecho el hombre más feliz del mundo mi honguito. Estás cordialmente invitada a comer mantecados el 15 de febrero :3<br>❤️<br><img src='20230924_192732-COLLAGE.jpg' alt='Personal Image' style='max-width: 28%; height: auto;'>";
+                createHearts();
+            } else {
+                messageElement.innerText = "That's not the right choice ;)";
+            }
+        }
+
+        function createHearts() {
+            for (let i = 0; i < 20; i++) {
+                const heart = document.createElement('div');
+                heart.className = 'heart';
+                heart.innerText = '❤️';
+                heart.style.left = Math.random() * 100 + 'vw';
+                heart.style.animationDelay = Math.random() * 2 + 's';
+                document.body.appendChild(heart);
+                setTimeout(() => {
+                    heart.remove();
+                }, 4000);
+            }
+        }
+
+        function moveNoButton() {
+            const noButton = document.getElementById("noButton");
+            noButton.style.position = 'absolute';
+            noButton.style.left = Math.random() * (window.innerWidth - noButton.offsetWidth) + 'px';
+            noButton.style.top = Math.random() * (window.innerHeight - noButton.offsetHeight) + 'px';
+        }
+    </script>
+</body>
+</html>
